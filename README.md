@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Minesweeper
+
+This challenge aims to test participants problem-solving skills and code reading skills in digging the solution in webpage source code. I expect participants to use F12 or visit the source repository of the minesweeper UI to find out that piece of code to decode and encode Minesweeper id, which the id itself already contains the dimension of mine positions.
+
+Other possible solutions include intercepting the POST request and waiting for manual input, and you can solve the map manually or run scripts on the browser to calculate, participants may also build a UI to facilitate it. Although I didnt enforce the time limit there may still limit in Heroku.
+
+Using headless Chrome to fully automate the UI interaction is possible, but not cost-efficient.
 
 ## Getting Started
 

@@ -1,0 +1,36 @@
+# Minesweeper
+
+Author - [Dipsy](https://github.com/dipsywong98)
+ 
+[Minesweeper](https://www.google.com/search?q=minesweeper&rlz=1C1YTUH_zh-HKHK1048HK1048&oq=minesweeper&gs_lcrp=EgZjaHJvbWUqBwgAEAAYjwIyBwgAEAAYjwIyDwgBEC4YQxiDARixAxiKBTIHCAIQLhiABDIHCAMQABiABDIHCAQQLhiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYQdIBCDUxMTlqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8#cobssid=s) is an interesting game, why not automate it?
+
+## Instructions
+
+You need to expose a POST endpoint `/minesweeper`, that accept a list of url that will lead you to different minesweeper game and you need to return the array of mines position in each game in `[rowIndex, columnIndex]`, sorted from left to right, then top to bottom, where both row and column are 0-indexed.
+
+## Sample post body
+
+```json
+[
+  "http://link.to.minesweeper/#MiwyLGtBPT0=",
+  "http://link.to.minesweeper/#Myw0LHBBQT0="
+]
+```
+## Sample response
+
+```json
+[
+  [[0,0], [1,1]],
+  [[0,0], [0,2], [1,1]]
+]
+```
+
+## Scoring
+
+Tiny map worth 2 points (width + height < 10), 5 of them
+
+Beginner map worth 5 points (width == height == 9), 2 of them
+
+The rest worth 10 points each, (15 < width < 61, 15 < height < 33), 8 of them
+
+Good luck~
