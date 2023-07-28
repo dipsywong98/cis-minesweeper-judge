@@ -1,0 +1,3 @@
+[submodule "cis-minesweeper-ui"]
+	path = cis-minesweeper-ui
+	url = git@github.com:dipsywong98/cis-minesweeper-ui.git

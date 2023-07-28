@@ -33,7 +33,7 @@ function env(key: string, fallback: EnvType): EnvType {
 const config = {
   APP_NAME: env('APP_NAME', name),
   APP_URL: env('APP_URL', `https://${env('VERCEL_URL', 'localhost:3000')}`),
-  MINESWEEPER_UI_URL: env('MINESWEEPER_UI_URL', 'http://localhost:5173/cis-minesweeper'),
+  MINESWEEPER_UI_URL: env('MINESWEEPER_UI_URL', '/cis-minesweeper'),
   COORDINATOR_TOKEN: env('COORDINATOR_TOKEN', ''),
   API_KEY: env('API_KEY', 'api-key'),
   ENABLE_FAKE_STUDENT: env('ENABLE_FAKE_STUDENT', false),
