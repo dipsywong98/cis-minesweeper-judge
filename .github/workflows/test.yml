@@ -12,6 +12,7 @@ jobs:
       with:
         ref: 'main'
         submodules: true
+        token: '${{ secrets.GH_PAT }}'
     - name: Use Node.js 18
       uses: actions/setup-node@v1
       with:
