@@ -26,8 +26,9 @@ function isEvaluateRequest(payload: unknown | IEvaluateRequest): payload is IEva
 
 export async function POST(req: Request) {
   const body = await req.json()
+  console.log('recieved evaluation request', body)
   if (!isEvaluateRequest(body)) {
-    return 
+    return NextResponse.json({ result: 'ok' })
   }
   const {callbackUrl, runId, teamUrl} = body
   const {input, output: expecteds, configs} = generateTestCases()
@@ -35,10 +36,12 @@ export async function POST(req: Request) {
     const {data: actuals} = await axios.post(`${teamUrl.replace(/\/$/, '')}/minesweeper`, input)
     const {message, score} = grade(actuals, expecteds, configs)
     const payload: ICallbackRequest = {message, score, runId}
+    console.log('responding evaluation request', payload)
     await axios.post(callbackUrl, payload, {headers: {Authorization: config.COORDINATOR_TOKEN}})
   } catch (e) {
     console.error(e)
     const payload: ICallbackRequest = {message: `Error occured - ${e}`, score: 0, runId}
+    console.log('responding evaluation request', payload)
     await axios.post(callbackUrl, payload, {headers: {Authorization: config.COORDINATOR_TOKEN}})
   }
   return NextResponse.json({ result: 'ok' })
