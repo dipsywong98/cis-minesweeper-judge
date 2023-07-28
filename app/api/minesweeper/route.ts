@@ -17,7 +17,7 @@ const deserializeBinaryString = (b64: string) => {
   return bin
 }
 
-export const deserialize = (packed: string) => {
+const deserialize = (packed: string) => {
   const [rowsS, colsS, flagsS] = LZUTF8.decompress(packed, { inputEncoding: 'Base64' }).split(',')
   const rows = Number.parseInt(rowsS)
   const cols = Number.parseInt(colsS)
