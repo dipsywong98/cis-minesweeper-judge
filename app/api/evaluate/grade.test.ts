@@ -1,6 +1,6 @@
 import cloneDeep from "lodash/cloneDeep"
 import { generateTestCases } from "../helpers/generateTestCase"
-import { grade } from "./route"
+import { grade } from "./grade"
 
 const testCases = generateTestCases()
 
