@@ -37,6 +37,5 @@ export const grade = (actuals: unknown, expecteds: number[][][], configs: ITestC
       }
     }
   })
-  console.log(results)
   return results.reduce(({message, score}, cur) => ({message: message + ';' + cur.message, score: score + cur.score}), {message: '', score: 0})
 }

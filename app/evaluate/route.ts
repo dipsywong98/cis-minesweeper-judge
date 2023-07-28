@@ -33,7 +33,7 @@ export async function POST(req: Request) {
   const {callbackUrl, runId, teamUrl} = body
   const {input, output: expecteds, configs} = generateTestCases()
   try {
-    const {data: actuals} = await axios.post(`${teamUrl.replace(/\/$/, '')}/api/minesweeper`, input)
+    const {data: actuals} = await axios.post(`${teamUrl.replace(/\/$/, '')}/minesweeper`, input)
     const {message, score} = grade(actuals, expecteds, configs)
     const payload: ICallbackRequest = {message, score, runId}
     console.log('responding evaluation request', payload)

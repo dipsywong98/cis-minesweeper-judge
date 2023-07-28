@@ -31,8 +31,8 @@ export const generateTestCase = (config: ITestCaseConfig): TestCase => {
   }
 }
 
-import { getTestCaseConfigs } from "../helpers/testCaseConfigs"
-import config from "../helpers/systemConfig";
+import { getTestCaseConfigs } from "./testCaseConfigs"
+import config from "./systemConfig";
 
 
 export function generateTestCases() {

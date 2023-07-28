@@ -1,3 +1,6 @@
+import config from './helpers/systemConfig'
+export const MINESWEEPER_UI_URL = config.MINESWEEPER_UI_URL
+
 # Minesweeper
 
 Author - [Dipsy](https://github.com/dipsywong98)
@@ -6,16 +9,17 @@ Author - [Dipsy](https://github.com/dipsywong98)
 
 ## Instructions
 
-You need to expose a POST endpoint `/api/minesweeper`, that accept a list of url that will lead you to different minesweeper game and you need to return the array of mines position in each game in `[rowIndex, columnIndex]`, sorted from left to right, then top to bottom, where both row and column are 0-indexed.
+You need to expose a POST endpoint `/minesweeper`, that accept a list of url that will lead you to different minesweeper game and you need to respond the array of mine positions in each game in `[rowIndex, columnIndex]` format, sorted from left to right, then top to bottom, where both row and column are 0-indexed. You may check [/sample](/sample) for more examples
 
 ## Sample post body
 
-```json
-[
-  "http://link.to.minesweeper/#MiwyLGtBPT0=",
-  "http://link.to.minesweeper/#Myw0LHBBQT0="
-]
-```
+<pre>
+  [
+    "{MINESWEEPER_UI_URL}#MiwyLGtBPT0=",
+    "{MINESWEEPER_UI_URL}#Myw0LHBBQT0="
+  ]
+</pre>
+
 ## Sample response
 
 ```json
