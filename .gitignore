@@ -36,5 +36,5 @@ next-env.d.ts
 
 *.env
 
-public/cis-minesweeper-ui/
-public/cis-minesweeper-ui.zip
+# public/cis-minesweeper-ui/
+# public/cis-minesweeper-ui.zip
