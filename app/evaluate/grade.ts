@@ -31,11 +31,16 @@ export const grade = (actuals: unknown, expecteds: number[][][], configs: ITestC
       }
     } else {
       return {
-        message: `expected ${JSON.stringify(actual)} to equal ${JSON.stringify(expected)}`,
+        message: `expected answer is ${JSON.stringify(expected)}, but actual answer received is ${JSON.stringify(actual)}`,
         score: 0,
         actual, expected, config
       }
     }
   })
-  return results.reduce(({message, score}, cur) => ({message: message + ';' + cur.message, score: score + cur.score}), {message: '', score: 0})
+  const message = results.map((r) => r.message).join(';')
+  const score = results.map((r) => r.score).reduce((a, b) => a + b, 0)
+  return {
+    message,
+    score,
+  }
 }

@@ -38,6 +38,7 @@ const config = {
   COORDINATOR_TOKEN: env('COORDINATOR_TOKEN', ''),
   API_KEY: env('API_KEY', 'api-key'),
   ENABLE_FAKE_STUDENT: env('ENABLE_FAKE_STUDENT', false),
+  GRADE_TIMEOUT_SECOND: env('GRADE_TIMEOUT_SECOND', 30),
   APP_VERSION: version,
 };
 

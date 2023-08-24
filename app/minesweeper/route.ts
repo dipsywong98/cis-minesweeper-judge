@@ -35,5 +35,6 @@ export async function POST (req: Request) {
     const [,id] = link.split('#')
     return deserialize(id)
   })
+  // await new Promise(resolve => setTimeout(resolve, 30000))
   return NextResponse.json(positions)
 }

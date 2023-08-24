@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { generateTestCases } from "../helpers/generateTestCase";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import config from "../helpers/systemConfig";
 import { grade } from "./grade";
 
@@ -32,17 +32,20 @@ export async function POST(req: Request) {
   }
   const {callbackUrl, runId, teamUrl} = body
   const {input, output: expecteds, configs} = generateTestCases()
-  try {
-    const {data: actuals} = await axios.post(`${teamUrl.replace(/\/$/, '')}/minesweeper`, input)
+  
+  const payload = await axios.post(`${teamUrl.replace(/\/$/, '')}/minesweeper`, input, {timeout: config.GRADE_TIMEOUT_SECOND * 1000})
+  .then(({data: actuals}) => {
     const {message, score} = grade(actuals, expecteds, configs)
     const payload: ICallbackRequest = {message, score, runId}
     console.log('responding evaluation request', payload)
-    await axios.post(callbackUrl, payload, {headers: {Authorization: config.COORDINATOR_TOKEN}})
-  } catch (e) {
+    return payload
+  })
+  .catch((e: AxiosError) => {
     console.error(e)
-    const payload: ICallbackRequest = {message: `Error occured - ${e}`, score: 0, runId}
-    console.log('responding evaluation request', payload)
-    await axios.post(callbackUrl, payload, {headers: {Authorization: config.COORDINATOR_TOKEN}})
-  }
+    const payload: ICallbackRequest = {message: `Error occured - ${e}`.replace('AxiosError', 'Error in participant server'), score: 0, runId}
+    return payload
+  })
+  console.log('responding evaluation request', payload)
+  await axios.post(callbackUrl, payload, {headers: {Authorization: config.COORDINATOR_TOKEN}})
   return NextResponse.json({ result: 'ok' })
 }

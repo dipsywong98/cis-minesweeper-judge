@@ -10,7 +10,11 @@ Author - [Dipsy](https://github.com/dipsywong98)
 
 ## Instructions
 
-You need to expose a POST endpoint `/minesweeper`, that accept a list of url that will lead you to different minesweeper game and you need to respond the array of mine positions in each game in `[rowIndex, columnIndex]` format, sorted from left to right, then top to bottom, where both row and column are 0-indexed. You may check [/sample](/sample) for more examples. You may download source code of the minesweeper game <a href={MINESWEEPER_UI_DOWNLOAD_URL}>here</a>
+You need to expose a POST endpoint `/minesweeper`, that accept a list of url that will lead you to different minesweeper game and you need to respond the array of mine positions in each game in `[rowIndex, columnIndex]` format, sorted from left to right, then top to bottom, where both row and column are 0-indexed.
+
+MIME type of application/json are expected for both request and response.
+
+You may check [/sample](/sample) for more examples input/output. You may download source code of the minesweeper game <a href={MINESWEEPER_UI_DOWNLOAD_URL}>here</a>
 
 ## Sample post body
 
@@ -29,13 +33,3 @@ You need to expose a POST endpoint `/minesweeper`, that accept a list of url tha
   [[0,0], [0,2], [1,1]]
 ]
 ```
-
-## Scoring
-
-Tiny map worth 2 points (width == height == 5), 5 of them
-
-Beginner map worth 5 points (width == height == 9), 2 of them
-
-The rest worth 10 points each, (15 < width < 61, 15 < height < 33), 8 of them
-
-Good luck~
