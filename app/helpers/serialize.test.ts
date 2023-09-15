@@ -12,10 +12,10 @@ describe('serialize', () => {
 
 describe('deserialize', () => {
   it('sample1', () => {
-    expect(deserialize('MiwyLHdwQT0=')).toEqual('1001')
+    expect(deserialize('MiwyLHdwQT0=')).toEqual([2,2,'1001'])
   })
 
   it('sample2', () => {
-    expect(deserialize('Myw0LHdxUUE=')).toEqual('101001000000')
+    expect(deserialize('Myw0LHdxUUE=')).toEqual([3,4,'101001000000'])
   })
 })

@@ -38,12 +38,12 @@ export const deserializeBinaryString = (b64: string) => {
   return bin
 }
 
-export const deserialize = (packed: string) => {
+export const deserialize = (packed: string): [number, number, string] => {
   const [rowsS, colsS, flagsS] = LZUTF8.decompress(packed, { inputEncoding: 'Base64' }).split(',')
   // const [rowsS, colsS, flagsS] = packed.split(',')
   const rows = Number.parseInt(rowsS)
   const cols = Number.parseInt(colsS)
   const pad = getPad(rows * cols)
   const flags = deserializeBinaryString(flagsS)
-  return flags.replace(RegExp(`${pad}$`), '')
+  return [rows, cols, flags.replace(RegExp(`${pad}$`), '')]
 }
