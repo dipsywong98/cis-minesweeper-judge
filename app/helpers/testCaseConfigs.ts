@@ -9,14 +9,14 @@ export const getTestCaseConfigs  = (): ITestCaseConfig[] => {
     mines: 5,
     score: 2
   })),
-  Array(2).fill('').map(() => ({
+  Array(3).fill('').map(() => ({
     cols: 9,
     rows: 9,
     mines: 10,
     score: 5
   })),
   
-  Array(10).fill('').map(() => {
+  Array(7).fill('').map(() => {
     const cols = randomInt(16, 61)
     const rows = randomInt(16, 33)
     const nCells = cols * rows
@@ -25,7 +25,14 @@ export const getTestCaseConfigs  = (): ITestCaseConfig[] => {
       cols,
       rows,
       mines,
-      score: 8
+      score: 10
     }
-  }))
+  }),
+  [{
+    cols: 9,
+    rows: 9,
+    mines: 10,
+    score: 5
+  }] // will be replaced by hardcoded test case
+  )
 }

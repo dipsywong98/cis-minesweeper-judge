@@ -1,10 +1,14 @@
 # Minesweeper
 
-This challenge aims to test participants problem-solving skills and code reading skills in digging the solution in webpage source code. I expect participants to use F12 or visit the source repository of the minesweeper UI to find out that piece of code to decode and encode Minesweeper id, which the id itself already contains the dimension of mine positions.
+This challenge aims to test participants problem-solving skills and code reading skills in digging the solution in minesweeper UI source code provided. I expect participants can read through the source code of the minesweeper UI to find out that piece of code that does the decoding of Minesweeper id, which the id decodes into dimensions and a bitmask, and the bitmask can be converted into mine positions.
 
-Other possible solutions include intercepting the POST request and waiting for manual input, and you can solve the map manually or run scripts on the browser to calculate, participants may also build a UI to facilitate it. Although I didnt enforce the time limit there may still limit in Heroku.
+Other possible solutions include intercepting the POST request and waiting for manual input, then you can solve the map manually or run scripts on the browser to calculate, participants may also build a UI to facilitate it to complete it withing the time limit.
 
-Using headless Chrome to fully automate the UI interaction is possible, but not cost-efficient.
+Using headless Chrome to fully automate the UI interaction is possible, but not cost-efficient as competition time is limited.
+
+Any other methods are welcomed as long as it solves it problem~
+
+Participants can gain 5% easily if they notice one of the test cases is hardcoded.
 
 ## Getting Started
 
