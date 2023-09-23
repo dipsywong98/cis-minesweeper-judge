@@ -31,7 +31,7 @@ export const grade = (actuals: unknown, expecteds: number[][][], configs: ITestC
       }
     } else {
       return {
-        message: `expected answer is ${JSON.stringify(expected)}, but actual answer received is ${JSON.stringify(actual)}`,
+        message: 'incorrect answer',
         score: 0,
         actual, expected, config
       }
